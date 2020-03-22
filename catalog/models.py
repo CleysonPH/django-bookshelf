@@ -58,10 +58,10 @@ class Book(Base):
     image = StdImageField('Imagem', upload_to='books', variations={
                           'thumb': {'width': 300, 'height': 430, 'crop': True}})
     author = models.ForeignKey(
-        "bookshelf.Author", verbose_name='Autor', on_delete=models.SET_NULL, null=True)
-    genre = models.ManyToManyField("bookshelf.Genre", verbose_name='Gênero')
+        "catalog.Author", verbose_name='Autor', on_delete=models.SET_NULL, null=True)
+    genre = models.ManyToManyField("catalog.Genre", verbose_name='Gênero')
     language = models.ForeignKey(
-        "bookshelf.Language", verbose_name='Língua', on_delete=models.SET_NULL, null=True)
+        "catalog.Language", verbose_name='Língua', on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = 'Livro'

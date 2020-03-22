@@ -43,7 +43,7 @@ DJANGO_APPS = [
 THIRD_APPS = []
 
 PROJECT_APPS = [
-    'bookshelf.apps.BookshelfConfig'
+    'catalog.apps.CatalogConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + PROJECT_APPS

@@ -6,16 +6,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookshelf', '0001_initial'),
+        ('catalog', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='Language',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('modified_at', models.DateTimeField(auto_now=True, verbose_name='Ultima modificação')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('created_at', models.DateTimeField(
+                    auto_now_add=True, verbose_name='Data de criação')),
+                ('modified_at', models.DateTimeField(
+                    auto_now=True, verbose_name='Ultima modificação')),
                 ('name', models.CharField(max_length=100, verbose_name='Língua')),
             ],
             options={
@@ -26,6 +29,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='author',
-            options={'ordering': ('-created_at', 'name'), 'verbose_name': 'Autor', 'verbose_name_plural': 'Autores'},
+            options={'ordering': (
+                '-created_at', 'name'), 'verbose_name': 'Autor', 'verbose_name_plural': 'Autores'},
         ),
     ]
