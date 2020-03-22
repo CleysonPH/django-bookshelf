@@ -9,5 +9,11 @@ class LanguageAdmin(admin.ModelAdmin):
 
 
 @admin.register(Genre)
-class Genre(admin.ModelAdmin):
+class GenreModel(admin.ModelAdmin):
     list_display = ('name', 'created_at', 'modified_at')
+
+
+@admin.register(Author)
+class AuthorModel(admin.ModelAdmin):
+    list_display = ('name', 'birth_date', 'death_date',
+                    'created_at', 'modified_at')
