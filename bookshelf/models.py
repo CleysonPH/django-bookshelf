@@ -1,4 +1,5 @@
 from django.db import models
+from stdimage import StdImageField
 
 
 class Base(models.Model):
@@ -7,3 +8,12 @@ class Base(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Author(Base):
+    name = models.CharField('Nome', max_length=100)
+    description = models.TextField('Biografia')
+    image = StdImageField('Imagem', upload_to='authors', variations={
+                          'thumb': {'width': 480, 'height': 480, 'crop': True}})
+    birth_date = models.DateField('Nascimento', blank=True, null=True)
+    death_date = models.DateField('Falecimento', blank=True, null=True)
