@@ -17,3 +17,9 @@ class GenreModel(admin.ModelAdmin):
 class AuthorModel(admin.ModelAdmin):
     list_display = ('name', 'birth_date', 'death_date',
                     'created_at', 'modified_at')
+
+
+@admin.register(Book)
+class BookModel(admin.ModelAdmin):
+    list_display = ('title', 'author', 'language',
+                    'isbn', 'created_at', 'modified_at')
