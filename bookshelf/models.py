@@ -49,3 +49,24 @@ class Genre(Base):
 
     def __str__(self):
         return self.name
+
+
+class Book(Base):
+    title = models.CharField('Título', max_length=200)
+    summary = models.TextField('Resumo')
+    isbn = models.CharField('ISBN', max_length=13)
+    image = StdImageField('Imagem', upload_to='books', variations={
+                          'thumb': {'width': 300, 'height': 430, 'crop': True}})
+    author = models.ForeignKey(
+        "bookshelf.Author", verbose_name='Autor', on_delete=models.SET_NULL, null=True)
+    genre = models.ManyToManyField("bookshelf.Genre", verbose_name='Gênero')
+    language = models.ForeignKey(
+        "bookshelf.Language", verbose_name='Língua', on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        verbose_name = 'Livro'
+        verbose_name_plural = 'Livros'
+        ordering = ('-created_at', 'title')
+
+    def __str__(self):
+        return self.title
