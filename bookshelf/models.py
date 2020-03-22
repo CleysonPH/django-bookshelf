@@ -37,3 +37,15 @@ class Language(Base):
 
     def __str__(self):
         return self.name
+
+
+class Genre(Base):
+    name = models.CharField('Gênero', max_length=200)
+
+    class Meta:
+        verbose_name = 'Gênero'
+        verbose_name_plural = 'Gêneros'
+        ordering = ('-created_at', 'name')
+
+    def __str__(self):
+        return self.name
