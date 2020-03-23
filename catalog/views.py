@@ -22,3 +22,13 @@ class BookDetailView(DetailView):
         context['page_title'] = 'Detalhes'
         context['page_description'] = 'Todas as informações do livro'
         return context
+
+
+class AuthorListView(ListView):
+    model = Author
+
+    def get_context_data(self, **kwargs):
+        context = super(AuthorListView, self).get_context_data(**kwargs)
+        context['page_title'] = 'Autores'
+        context['page_description'] = 'Lista com todos os autores cadatrados na plataforma'
+        return context
