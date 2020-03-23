@@ -40,7 +40,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_APPS = []
+THIRD_APPS = [
+    'bootstrap4'
+]
 
 PROJECT_APPS = [
     'catalog.apps.CatalogConfig',
