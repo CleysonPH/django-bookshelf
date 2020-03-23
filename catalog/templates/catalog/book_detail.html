@@ -22,7 +22,7 @@
                 <p>
                     Gênero: {% for genre in book.genre.all %}<a href="#" class="badge badge-secondary">{{ genre.name }}</a>{% endfor %}
                 </p>
-                <p>Autor: {{ book.author.name }}</p>
+                <p>Autor: <a href="{% url 'catalog:author-detail' pk=book.author.pk %}">{{ book.author.name }}</a></p>
                 <p>ISBN: {{ book.isbn }}</p>
                 <p>Língua: {{ book.language }}</p>
             </div>
