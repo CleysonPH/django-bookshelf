@@ -1,4 +1,5 @@
 {% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,8 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %} - Estante Virtual</title>
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Estante Virtual</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="catalog-dropdown-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Catalogo
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="catalog-dropdown-link">
+                        <a class="dropdown-item" href="{% url 'catalog:books-list' %}">Livros</a>
+                        <a class="dropdown-item" href="#">Autores</a>
+                        <a class="dropdown-item" href="#">Gêneros</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>{{ page_title }}</h1>
+            <p class="lead">{{ page_description }}</p>
+        </div>
+    </header>
 
     {% block content %}
     {% endblock content %}
