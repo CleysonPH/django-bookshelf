@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'catalog/css/style.css' %}">
+{% endblock styles %}
 
 {% block title %}
     {{ page_title }}
@@ -14,7 +19,8 @@
                             <img src="{{ book.image.thumb.url }}" class="mr-3" alt="Imagem de capa do livro {{ book.title }}">
                                 <div class="media-body">
                                 <h5 class="mt-0 mb-1">{{ book.title }}</h5>
-                                {{ book.summary|linebreaksbr }}
+                                <p>{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
+                                <a href="#" class="btn btn-primary">Ver detalhes</a>
                             </div>
                         </li>
                     {% endfor %}

@@ -56,7 +56,7 @@ class Book(Base):
     summary = models.TextField('Resumo')
     isbn = models.CharField('ISBN', max_length=13)
     image = StdImageField('Imagem', upload_to='books', variations={
-                          'thumb': {'width': 300, 'height': 430, 'crop': True}})
+                          'thumb': {'width': 64, 'height': 92, 'crop': True}})
     author = models.ForeignKey(
         "catalog.Author", verbose_name='Autor', on_delete=models.SET_NULL, null=True)
     genre = models.ManyToManyField("catalog.Genre", verbose_name='Gênero')
