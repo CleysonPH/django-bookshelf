@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'catalog/css/style.css' %}">
+{% endblock styles %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ author.image.url }}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-md-9">
+                <h2>{{ author.name }}</h2>
+                <p>{{ author.description }}</p>
+                {% if author.birth_date %}
+                    <p>Nascimento: {{ author.birth_date }}</p>
+                {% endif %}
+                {% if author.death_date %}
+                    <p>Falecimento: {{ author.death_date }}</p>
+                {% endif %}
+
+                <div class="card card-outline-secondary my-4">
+                    <div class="card-header">
+                        Livros
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            {% for book in author.book_set.all %}
+                                <li class="media">
+                                    <img src="{{ book.image.thumb.url }}" class="mr-3" alt="Imagem de capa do livro {{ book.title }}">
+                                        <div class="media-body">
+                                        <h5 class="mt-0 mb-1">{{ book.title }}</h5>
+                                        <p>{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
+                                        <hr>
+                                        <a href="{% url 'catalog:book-detail' pk=book.pk %}" class="btn btn-primary">Ver detalhes</a>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
