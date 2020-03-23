@@ -20,7 +20,7 @@
                                 <div class="media-body">
                                 <h5 class="mt-0 mb-1">{{ book.title }}</h5>
                                 <p>{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
-                                <a href="#" class="btn btn-primary">Ver detalhes</a>
+                                <a href="{% url 'catalog:book-detail' pk=book.pk %}" class="btn btn-primary">Ver detalhes</a>
                             </div>
                         </li>
                     {% endfor %}
