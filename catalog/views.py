@@ -52,3 +52,13 @@ class GenreListView(ListView):
         context['page_title'] = 'Gêneros'
         context['page_description'] = 'Lista com todos os gêneros cadatrados na plataforma'
         return context
+
+
+class GenreDetailView(DetailView):
+    model = Genre
+
+    def get_context_data(self, **kwargs):
+        context = super(GenreDetailView, self).get_context_data(**kwargs)
+        context['page_title'] = context['genre'].name
+        context['page_description'] = f'Todos os livros do gênero {context["genre"].name.lower()} disponiveis na plataforma'
+        return context

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'catalog/css/style.css' %}">
+{% endblock styles %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="list-unstyled">
+                    {% for book in genre.book_set.all %}
+                        <li class="media">
+                            <img src="{{ book.image.thumb.url }}" class="mr-3" alt="Imagem de capa do livro {{ book.title }}">
+                                <div class="media-body">
+                                <h5 class="mt-0 mb-1">{{ book.title }}</h5>
+                                <p>{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
+                                <a href="{% url 'catalog:book-detail' pk=book.pk %}" class="btn btn-primary">Ver detalhes</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

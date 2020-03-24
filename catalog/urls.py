@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import AuthorDetailView, AuthorListView, BookDetailView, BooksListView, GenreListView
+from .views import AuthorDetailView, AuthorListView, BookDetailView, BooksListView, GenreDetailView, GenreListView
 
 
 app_name = 'catalog'
@@ -11,4 +11,5 @@ urlpatterns = [
     path('autor/<int:pk>/detalhes',
          AuthorDetailView.as_view(), name='author-detail'),
     path('generos', GenreListView.as_view(), name='genres-list'),
+    path('genero/<int:pk>/detalhes', GenreDetailView.as_view(), name='genre-detail')
 ]

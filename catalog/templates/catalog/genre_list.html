@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
             {% for genre in genre_list %}
                 <div class="col-md-3">
-                    <a href="" class="btn btn-block btn-outline-primary mb-4">{{ genre.name }}</a>
+                    <a href="{% url 'catalog:genre-detail' pk=genre.pk %}" class="btn btn-block btn-outline-primary mb-4">{{ genre.name }}</a>
                 </div>
             {% endfor %}
         </div>
