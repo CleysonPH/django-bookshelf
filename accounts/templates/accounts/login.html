@@ -11,6 +11,7 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons submit='Login'%}{% endbuttons %}
+            Ainda não possui registro? <a href="{% url 'accounts:register' %}">Registre-se</a>
         </form>
     </main>
 {% endblock content %}
