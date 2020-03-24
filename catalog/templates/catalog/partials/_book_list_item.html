@@ -1,0 +1,8 @@
+<li class="media">
+    <img src="{{ book.image.thumb.url }}" class="mr-3" alt="Imagem de capa do livro {{ book.title }}">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ book.title }}</h5>
+            <p>{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
+        <a href="{% url 'catalog:book-detail' pk=book.pk %}" class="btn btn-primary">Ver detalhes</a>
+    </div>
+</li>
