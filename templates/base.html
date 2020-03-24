@@ -38,6 +38,7 @@
                                 {{ user.get_full_name|default:user.username }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="account-dropdown-link">
+                                <a class="dropdown-item" href="{% url 'accounts:password-change' %}">Atualizar senha</a>
                                 <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
                             </div>
                         </li>
