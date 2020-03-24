@@ -46,6 +46,7 @@ THIRD_APPS = [
 
 PROJECT_APPS = [
     'catalog.apps.CatalogConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + PROJECT_APPS
