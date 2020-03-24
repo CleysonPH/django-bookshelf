@@ -42,3 +42,13 @@ class AuthorDetailView(DetailView):
         context['page_title'] = 'Detalhes'
         context['page_description'] = 'Todas as informações do autor'
         return context
+
+
+class GenreListView(ListView):
+    model = Genre
+
+    def get_context_data(self, **kwargs):
+        context = super(GenreListView, self).get_context_data(**kwargs)
+        context['page_title'] = 'Gêneros'
+        context['page_description'] = 'Lista com todos os gêneros cadatrados na plataforma'
+        return context

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row justify-content-center">
+            {% for genre in genre_list %}
+                <div class="col-md-3">
+                    <a href="" class="btn btn-block btn-outline-primary mb-4">{{ genre.name }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}
