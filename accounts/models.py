@@ -1,5 +1,6 @@
 from django.db import models
 from stdimage import StdImageField
+from django.urls import reverse
 
 
 class Base(models.Model):
@@ -25,3 +26,6 @@ class UserProfile(Base):
 
     def __str__(self):
         return self.user.username
+
+    def get_absolute_url(self):
+        return reverse('accounts:user-detail', kwargs={'username': self.user.username})
