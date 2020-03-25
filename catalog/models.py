@@ -1,5 +1,6 @@
 from django.db import models
 from stdimage import StdImageField
+from django.urls import reverse
 
 
 class Base(models.Model):
@@ -26,6 +27,9 @@ class Author(Base):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('catalog:author-detail', kwargs={'pk': self.pk})
+
 
 class Language(Base):
     name = models.CharField('Língua', max_length=100)
@@ -50,6 +54,9 @@ class Genre(Base):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('catalog:genre-detail', kwargs={'pk': self.pk})
+
 
 class Book(Base):
     title = models.CharField('Título', max_length=200)
@@ -70,3 +77,6 @@ class Book(Base):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('catalog:book-detail', kwargs={'pk': self.pk})

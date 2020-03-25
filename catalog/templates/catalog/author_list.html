@@ -20,7 +20,7 @@
                                 <div class="media-body">
                                 <h5 class="mt-0 mb-1">{{ author.name }}</h5>
                                 <p>{{ author.description|linebreaksbr|truncatechars:400 }}</p>
-                                <a href="{% url 'catalog:author-detail' pk=author.pk %}" class="btn btn-primary">Ver detalhes</a>
+                                <a href="{{ author.get_absolute_url }}" class="btn btn-primary">Ver detalhes</a>
                             </div>
                         </li>
                     {% endfor %}

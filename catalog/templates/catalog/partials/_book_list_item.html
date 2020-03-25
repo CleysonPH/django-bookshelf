@@ -3,6 +3,6 @@
         <div class="media-body">
             <h5 class="mt-0 mb-1">{{ book.title }}</h5>
             <p class="text-justify">{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
-        <a href="{% url 'catalog:book-detail' pk=book.pk %}" class="btn btn-primary">Ver detalhes</a>
+        <a href="{{ book.get_absolute_url }}" class="btn btn-primary">Ver detalhes</a>
     </div>
 </li>

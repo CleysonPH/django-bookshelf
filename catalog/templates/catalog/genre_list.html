@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
             {% for genre in genre_list %}
                 <div class="col-md-3">
-                    <a href="{% url 'catalog:genre-detail' pk=genre.pk %}" class="btn btn-block btn-outline-primary mb-4">
+                    <a href="{{ genre.get_absolute_url }}" class="btn btn-block btn-outline-primary mb-4">
                         {{ genre.name }} <span class="badge badge-info">{{ genre.book_set.count }}</span>
                     </a>
                 </div>
