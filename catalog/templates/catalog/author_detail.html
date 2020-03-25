@@ -18,7 +18,7 @@
 
             <div class="col-md-9">
                 <h2>{{ author.name }}</h2>
-                <p>{{ author.description }}</p>
+                <p class="text-justify">{{ author.description }}</p>
                 {% if author.birth_date %}
                     <p>Nascimento: {{ author.birth_date }}</p>
                 {% endif %}
@@ -33,15 +33,7 @@
                     <div class="card-body">
                         <ul class="list-unstyled">
                             {% for book in author.book_set.all %}
-                                <li class="media">
-                                    <img src="{{ book.image.thumb.url }}" class="mr-3" alt="Imagem de capa do livro {{ book.title }}">
-                                        <div class="media-body">
-                                        <h5 class="mt-0 mb-1">{{ book.title }}</h5>
-                                        <p>{{ book.summary|linebreaksbr|truncatechars:400 }}</p>
-                                        <hr>
-                                        <a href="{% url 'catalog:book-detail' pk=book.pk %}" class="btn btn-primary">Ver detalhes</a>
-                                    </div>
-                                </li>
+                                {% include 'catalog/partials/_book_list_item.html' %}
                             {% endfor %}
                         </ul>
                     </div>

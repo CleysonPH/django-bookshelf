@@ -18,7 +18,7 @@
 
             <div class="col-md-9">
                 <h2>{{ book.title }}</h2>
-                <p>{{ book.summary }}</p>
+                <p class="text-justify">{{ book.summary }}</p>
                 <p>
                     Gênero: {% for genre in book.genre.all %}<a href="{% url 'catalog:genre-detail' pk=genre.pk %}" class="badge badge-secondary">{{ genre.name }}</a>{% endfor %}
                 </p>
