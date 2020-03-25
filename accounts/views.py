@@ -1,9 +1,11 @@
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.views import (
     LoginView as GenericLoginView,
     PasswordChangeView as GenericPasswordChangeView,
     PasswordChangeDoneView as GenericPasswordChangeDoneView,
 )
+from django.views.generic import DetailView
 from django.contrib.auth.models import User
 from django.views.generic import CreateView
 
@@ -54,3 +56,17 @@ class PasswordChangeDoneView(GenericPasswordChangeDoneView):
         context['page_title'] = 'Operação concluida'
         context['page_description'] = 'Sua senha foi alterada com sucesso'
         return context
+
+
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'accounts/user_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        context['page_title'] = 'Perfil'
+        context['page_description'] = f'Informações sobre o usuário {context["user"].get_full_name() or context["user"].username}'
+        return context
+
+    def get_object(self):
+        return get_object_or_404(User, username=self.kwargs.get('username'))

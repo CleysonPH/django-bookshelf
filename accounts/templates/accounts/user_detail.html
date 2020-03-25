@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ user.profile.image.url }}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-md-9">
+                <h2>{{ user.get_full_name }}</h2>
+                <p class="text-justify">{{ user.profile.description }}</p>
+                <p>
+                    Gênero Favorito: <a href="{{ user.profile.favorite_genre.get_absolute_url }}" class="badge badge-secondary">{{ user.profile.favorite_genre.name }}</a>
+                </p>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

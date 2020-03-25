@@ -32,10 +32,10 @@
                             <a class="dropdown-item" href="{% url 'catalog:genres-list' %}">Gêneros</a>
                         </div>
                     </li>
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="account-dropdown-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ user.get_full_name|default:user.username }}
+                                {{ request.user.get_full_name|default:request.user.username }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="account-dropdown-link">
                                 <a class="dropdown-item" href="{% url 'accounts:password-change' %}">Atualizar senha</a>
