@@ -8,6 +8,7 @@ from django.contrib.auth.views import (
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
 from django.views.generic import CreateView
+from django.contrib.auth.decorators import login_required
 
 from .forms import UserCreationForm, UserUpdateForm, UserProfileModelForm
 
@@ -72,6 +73,7 @@ class UserDetailView(DetailView):
         return get_object_or_404(User, username=self.kwargs.get('username'))
 
 
+@login_required
 def profile_update(request):
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
