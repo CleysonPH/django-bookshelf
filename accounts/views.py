@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.contrib.auth.views import (
     LoginView as GenericLoginView,
@@ -9,7 +9,7 @@ from django.views.generic import DetailView
 from django.contrib.auth.models import User
 from django.views.generic import CreateView
 
-from .forms import UserCreationForm
+from .forms import UserCreationForm, UserUpdateForm, UserProfileModelForm
 
 
 class LoginView(GenericLoginView):
@@ -70,3 +70,27 @@ class UserDetailView(DetailView):
 
     def get_object(self):
         return get_object_or_404(User, username=self.kwargs.get('username'))
+
+
+def profile_update(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        user_profile_form = UserProfileModelForm(
+            request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and user_profile_form.is_valid():
+            user_form.save()
+            user_profile_form.save()
+
+            return redirect('accounts:user-detail', username=request.user.username)
+
+    user_form = UserUpdateForm(instance=request.user)
+    user_profile_form = UserProfileModelForm(instance=request.user.profile)
+    context = {
+        'page_title': 'Atualizar Perfil',
+        'page_description': f'Atualizar as informações sobre o usuário {request.user.get_full_name() or request.user.username}',
+        'user_form': user_form,
+        'user_profile_form': user_profile_form,
+    }
+
+    return render(request, 'accounts/profile_update.html', context)

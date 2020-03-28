@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form user_form %}
+            {% bootstrap_form user_profile_form %}
+            {% buttons submit='Atualizar perfil'%}{% endbuttons %}
+        </form>
+    </main>
+{% endblock content %}

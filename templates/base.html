@@ -39,6 +39,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="account-dropdown-link">
                                 <a class="dropdown-item" href="{{ request.user.profile.get_absolute_url }}">Ver perfil</a>
+                                <a class="dropdown-item" href="{% url 'accounts:profile-update' %}">Atualizar perfil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'accounts:password-change' %}">Atualizar senha</a>
                                 <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
