@@ -5,4 +5,4 @@ from .models import UserProfile
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user',  'favorite_genre', 'created_at', 'modified_at')
+    list_display = ('user', 'favorite_genre', 'created_at', 'modified_at')
