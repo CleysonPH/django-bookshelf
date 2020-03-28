@@ -12,9 +12,9 @@ class Base(models.Model):
 
 
 class UserProfile(Base):
-    image = StdImageField('Imagem de perfil', upload_to='users', variations={
+    image = StdImageField('Imagem de perfil', upload_to='users', default='default.png', variations={
                           'thumb': {'width': 64, 'height': 64, 'crop': True}})
-    description = models.TextField('Biografia', blank=True)
+    description = models.TextField('Biografia', blank=True, null=False)
     favorite_genre = models.ForeignKey(
         "catalog.Genre", verbose_name='Gênero favorito', on_delete=models.SET_NULL, null=True, blank=True)
     user = models.OneToOneField(

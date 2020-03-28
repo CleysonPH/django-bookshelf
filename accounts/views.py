@@ -11,6 +11,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserCreationForm, UserUpdateForm, UserProfileModelForm
+from .models import UserProfile
 
 
 class LoginView(GenericLoginView):
@@ -35,6 +36,11 @@ class RegisterView(CreateView):
         context['page_title'] = 'Registro'
         context['page_description'] = 'Faça o seu cadastro na plataforma e tenha acesso a todos os recursos disponiveis'
         return context
+
+    def form_valid(self, form):
+        self.object = form.save()
+        UserProfile.objects.create(user=self.object)
+        return super().form_valid(form)
 
 
 class PasswordChangeView(GenericPasswordChangeView):
