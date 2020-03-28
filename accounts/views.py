@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import UserCreationForm, UserUpdateForm, UserProfileModelForm
 from .models import UserProfile
+from bookshelf.models import BookshelfItem
 
 
 class LoginView(GenericLoginView):
@@ -73,6 +74,15 @@ class UserDetailView(DetailView):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['page_title'] = 'Perfil'
         context['page_description'] = f'Informações sobre o usuário {context["user"].get_full_name() or context["user"].username}'
+        context['read_books'] = [
+            read_book.book for read_book in BookshelfItem.objects.filter(user=context['user'], status='read')
+        ]
+        context['reading_books'] = [
+            reading_book.book for reading_book in BookshelfItem.objects.filter(user=context['user'], status='reading')
+        ]
+        context['want_read_books'] = [
+            want_read_book.book for want_read_book in BookshelfItem.objects.filter(user=context['user'], status='want')
+        ]
         return context
 
     def get_object(self):

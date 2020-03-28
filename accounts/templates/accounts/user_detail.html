@@ -18,6 +18,79 @@
                 <p>
                     Gênero Favorito: <a href="{{ user.profile.favorite_genre.get_absolute_url }}" class="badge badge-secondary">{{ user.profile.favorite_genre.name }}</a>
                 </p>
+
+                <div class="accordion" id="bookshelf-list">
+                    <div class="card">
+                        <div class="card-header" id="read-books">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#read-books-list"
+                                    aria-expanded="false" aria-controls="read-books-list">
+                                    Livros lidos
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="read-books-list" class="collapse" aria-labelledby="read-books" data-parent="#bookshelf-list">
+                            <div class="card-body">
+                                {% if read_books %}
+                                    {% for book in read_books %}
+                                        <div class="mb-5">
+                                            {% include 'catalog/partials/_book_list_item.html' %}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    Nenhum livro foi marcado com esse status.
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="reading-books">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#reading-books-list"
+                                    aria-expanded="true" aria-controls="reading-books-list">
+                                    Livros que estou lendo
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="reading-books-list" class="collapse" aria-labelledby="reading-books" data-parent="#bookshelf-list">
+                            <div class="card-body">
+                                {% if read_reading_booksbooks %}
+                                    {% for book in reading_books %}
+                                        <div class="mb-5">
+                                            {% include 'catalog/partials/_book_list_item.html' %}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    Nenhum livro foi marcado com esse status.
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="want-read-books">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#want-read-books-list"
+                                    aria-expanded="false" aria-controls="want-read-books-list">
+                                    Livros que quero ler
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="want-read-books-list" class="collapse" aria-labelledby="want-read-books" data-parent="#bookshelf-list">
+                            <div class="card-body">
+                                {% if want_read_books %}
+                                    {% for book in want_read_books %}
+                                        <div class="mb-5">
+                                            {% include 'catalog/partials/_book_list_item.html' %}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    Nenhum livro foi marcado com esse status.
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
