@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %} - Estante Virtual</title>
     {% bootstrap_css %}
+    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block styles %}{% endblock styles %}
 </head>
@@ -66,5 +67,12 @@
     {% endblock content %}
 
     {% bootstrap_javascript jquery='full' %}
+    <script>
+        feather.replace()
+
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
 </body>
 </html>
