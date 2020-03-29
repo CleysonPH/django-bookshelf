@@ -12,20 +12,20 @@
 {% block content %}
     <main class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <img src="{{ book.image.url }}" class="img-fluid" alt="">
 
                 {% if request.user.is_authenticated %}
                     <div class="w-100 d-inline-flex justify-content-center mt-2">
                         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                             <div class="btn-group mr-2" role="group" aria-label="First group">
-                                <a role="button" href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Já li">
+                                <a role="button" href="{% url 'bookshelf:mark-book-has-read' pk=book.pk %}" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Já li">
                                     <i data-feather="book"></i>
                                 </a>
-                                <a role="button" href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Estou lendo">
+                                <a role="button" href="{% url 'bookshelf:mark-book-has-reading' pk=book.pk %}" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Estou lendo">
                                     <i data-feather="book-open"></i>
                                 </a>
-                                <a role="button" href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Quero ler">
+                                <a role="button" href="{% url 'bookshelf:mark-book-has-want-read' pk=book.pk %}" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Quero ler">
                                     <i data-feather="bookmark"></i>
                                 </a>
                             </div>
