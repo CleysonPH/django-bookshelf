@@ -11,7 +11,7 @@ class Base(models.Model):
 
 
 class Review(Base):
-    title = models.CharField('Título', max_lenght=100)
+    title = models.CharField('Título', max_length=100)
     description = models.TextField('Crítica')
     rating = models.IntegerField('Nota', validators=[
         MaxValueValidator(5),
@@ -21,7 +21,7 @@ class Review(Base):
         'catalog.Book',
         verbose_name='Livro',
         on_delete=models.CASCADE
-    ) 
+    )
     user = models.ForeignKey(
         'auth.User',
         verbose_name="Usuário",
