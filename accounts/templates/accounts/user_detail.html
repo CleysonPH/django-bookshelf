@@ -102,7 +102,9 @@
                                     {% for review in user.review_set.all %}
                                         <li class="media">
                                             <div class="media-body">
-                                                <h5 class="mt-0 mb-1">{{ review.book }} - {{ review.title }}</h5>
+                                                <h5 class="mt-0 mb-1">
+                                                    <a href="{{ review.book.get_absolute_url }}">{{ review.book }}</a> - {{ review.title }}
+                                                </h5>
                                                 <p class="text-justify">{{ review.description }}</p>
                                                 <small>Postado em {{ review.modified_at }}</small>
                                             </div>

@@ -30,7 +30,10 @@
                                 </a>
                             </div>
                         </div>
+
                     </div>
+
+                    <a role="button" href="{% url 'reviews:review-create' book_pk=book.pk %}" class="btn btn-primary">Fazer uma crítica</a>
                 {% endif %}
             </div>
 
