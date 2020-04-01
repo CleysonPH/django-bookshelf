@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include('core.urls', namespace='core')),
     path('catalogo/', include('catalog.urls', namespace='catalog')),
     path('usuario/', include('accounts.urls', namespace='accounts')),
     path('prateleira/', include('bookshelf.urls', namespace='bookshelf')),

@@ -46,6 +46,7 @@ THIRD_APPS = [
 ]
 
 PROJECT_APPS = [
+    'core.apps.CoreConfig',
     'catalog.apps.CatalogConfig',
     'accounts.apps.AccountsConfig',
     'bookshelf.apps.BookshelfConfig',

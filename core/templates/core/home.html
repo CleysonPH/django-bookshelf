@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <div class="jumbotron text-center">
+                    <i data-feather="book"></i>
+                    <h3>Livros Cadastrados</h3>
+                    <h3>{{ book_count }}</h3>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="jumbotron text-center">
+                    <i data-feather="pen-tool"></i>
+                    <h3>Autores Cadastrados</h3>
+                    <h3>{{ author_count }}</h3>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="jumbotron text-center">
+                    <i data-feather="message-circle"></i>
+                    <h3>Críticas Cadastradas</h3>
+                    <h3>{{ review_count }}</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
