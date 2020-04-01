@@ -89,3 +89,11 @@ class Book(Base):
 
     def get_want_read_count(self):
         return self.bookshelfitem_set.filter(status='want').count()
+
+    def get_rating(self):
+        reviews_notes = [review.rating for review in self.review_set.all()]
+
+        try:
+            return sum(reviews_notes) / len(reviews_notes)
+        except ZeroDivisionError:
+            return 0

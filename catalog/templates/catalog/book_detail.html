@@ -46,6 +46,9 @@
                 <p>Autor: <a href="{% url 'catalog:author-detail' pk=book.author.pk %}">{{ book.author.name }}</a></p>
                 <p>ISBN: {{ book.isbn }}</p>
                 <p>Língua: {{ book.language }}</p>
+                <p>
+                    Avaliação média: <span class="text-warning rating">{{ book.get_rating }}</span>
+                </p>
                 <div class="w-100 d-inline-flex justify-content-between">
                     <p>Pessoas que estão ledo: {{ book.get_reading_count }}</p>
                     <p>Pessoas que já leram: {{ book.get_read_count }}</p>
