@@ -5,9 +5,8 @@ from django.contrib.auth.views import (
     PasswordChangeView as GenericPasswordChangeView,
     PasswordChangeDoneView as GenericPasswordChangeDoneView,
 )
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.contrib.auth.models import User
-from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserCreationForm, UserUpdateForm, UserProfileModelForm

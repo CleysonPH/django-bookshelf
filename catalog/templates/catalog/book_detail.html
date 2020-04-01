@@ -48,6 +48,21 @@
                     <p>Pessoas que já leram: {{ book.get_read_cout }}</p>
                     <p>Pessoas que querem ler: {{ book.get_want_read_cout }}</p>
                 </div>
+
+                {% if book.review_set.all %}
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Avaliações
+                        </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {% for review in book.review_set.all %}
+                                        {% include 'reviews/partials/_review_list_item.html' %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </main>
