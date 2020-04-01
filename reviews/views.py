@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
@@ -30,6 +30,14 @@ def review_create(request, book_pk):
     }
 
     return render(request, 'reviews/review_form.html', context)
+
+
+@login_required
+def review_delete(request, pk):
+    review = get_object_or_404(Review, pk=pk, user=request.user)
+    review.delete()
+
+    return redirect('reviews:review-list')
 
 
 class ReviewList(ListView, LoginRequiredMixin):

@@ -13,39 +13,43 @@
     <main class="container">
         <div class="row">
             <div class="col-sm-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Título</th>
-                            <th scope="col">Livro</th>
-                            <th scope="col">Nota</th>
-                            <th scope="col">Ultima atualização</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for review in review_list %}
+                {% if review_list %}
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td scope="row">{{ review.title }}</td>
-                                <td>{{ review.book }}</td>
-                                <td>{{ review.rating }}</td>
-                                <td>{{ review.modified_at }}</td>
-                                <td>
-                                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <a role="button" href="{% url 'reviews:review-update' pk=review.pk %}" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar">
-                                                <i data-feather="edit"></i>
-                                            </a>
-                                            <a role="button" href="" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Deletar">
-                                                <i data-feather="trash-2"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
+                                <th scope="col">Título</th>
+                                <th scope="col">Livro</th>
+                                <th scope="col">Nota</th>
+                                <th scope="col">Ultima atualização</th>
+                                <th scope="col">Ações</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for review in review_list %}
+                                <tr>
+                                    <td scope="row">{{ review.title }}</td>
+                                    <td>{{ review.book }}</td>
+                                    <td>{{ review.rating }}</td>
+                                    <td>{{ review.modified_at }}</td>
+                                    <td>
+                                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                                <a role="button" href="{% url 'reviews:review-update' pk=review.pk %}" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                                    <i data-feather="edit"></i>
+                                                </a>
+                                                <a role="button" onclick="return confirm('Certeza que deseja remover esta crítica?');" href="{% url 'reviews:review-delete' pk=review.pk %}" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Deletar">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h1 class="text-center">Você ainda não fez nenhuma crítica</h1>
+                {% endif %}
             </div>
         </div>
     </main>
