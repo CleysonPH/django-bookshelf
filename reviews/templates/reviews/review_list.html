@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'catalog/css/style.css' %}">
+{% endblock styles %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Título</th>
+                            <th scope="col">Livro</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Ultima atualização</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for review in review_list %}
+                            <tr>
+                                <td scope="row">{{ review.title }}</td>
+                                <td>{{ review.book }}</td>
+                                <td>{{ review.rating }}</td>
+                                <td>{{ review.modified_at }}</td>
+                                <td>
+                                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                                            <a role="button" href="" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                                <i data-feather="edit"></i>
+                                            </a>
+                                            <a role="button" href="" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Deletar">
+                                                <i data-feather="trash-2"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

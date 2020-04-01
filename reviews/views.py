@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import ReviewModelForm
+from .models import Review
 from catalog.models import Book
 
 
@@ -26,3 +29,16 @@ def review_create(request, book_pk):
     }
 
     return render(request, 'reviews/review_form.html', context)
+
+
+class ReviewList(ListView, LoginRequiredMixin):
+    model = Review
+
+    def get_queryset(self):
+        return Review.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewList, self).get_context_data(**kwargs)
+        context['page_title'] = 'Críticas'
+        context['page_description'] = 'Todos as críticas realizadas por você'
+        return context
