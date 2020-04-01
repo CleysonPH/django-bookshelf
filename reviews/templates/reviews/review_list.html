@@ -33,7 +33,7 @@
                                 <td>
                                     <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <a role="button" href="" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                            <a role="button" href="{% url 'reviews:review-update' pk=review.pk %}" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar">
                                                 <i data-feather="edit"></i>
                                             </a>
                                             <a role="button" href="" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Deletar">
