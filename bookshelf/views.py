@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import BookshelfItem
 from catalog.models import Book
 
 
+@login_required
 def mark_book_has_read(request, pk):
     book = get_object_or_404(Book, pk=pk)
     try:
@@ -23,6 +25,7 @@ def mark_book_has_read(request, pk):
     return redirect('catalog:book-detail', pk=book.pk)
 
 
+@login_required
 def mark_book_has_reading(request, pk):
     book = get_object_or_404(Book, pk=pk)
     try:
@@ -42,6 +45,7 @@ def mark_book_has_reading(request, pk):
     return redirect('catalog:book-detail', pk=book.pk)
 
 
+@login_required
 def mark_book_has_want_read(request, pk):
     book = get_object_or_404(Book, pk=pk)
     try:
