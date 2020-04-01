@@ -91,6 +91,27 @@
                         </div>
                     </div>
                 </div>
+
+                {% if user.review_set.all %}
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Avaliações ({{ user.review_set.count }})
+                        </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {% for review in user.review_set.all %}
+                                        <li class="media">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">{{ review.book }} - {{ review.title }}</h5>
+                                                <p class="text-justify">{{ review.description }}</p>
+                                                <small>Postado em {{ review.modified_at }}</small>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </main>
