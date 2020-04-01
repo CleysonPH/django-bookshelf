@@ -105,8 +105,11 @@
                                                 <h5 class="mt-0 mb-1">
                                                     <a href="{{ review.book.get_absolute_url }}">{{ review.book }}</a> - {{ review.title }}
                                                 </h5>
+                                                <span class="text-warning rating">
+                                                    {{ review.rating }}
+                                                </span>
                                                 <p class="text-justify">{{ review.description }}</p>
-                                                <small>Postado em {{ review.modified_at }}</small>
+                                                <small class="text-muted">Postado em {{ review.modified_at }}</small>
                                             </div>
                                         </li>
                                     {% endfor %}
