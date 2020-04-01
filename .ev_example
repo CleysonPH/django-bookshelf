@@ -1,0 +1,8 @@
+SECRET_KEY=your_super_secret_key
+DEBUG=False
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=your_data_base_name
+DB_USER=your_data_base_user
+DB_PASSWORD=your_data_base_user_password
+DB_HOST=your_data_base_host
+DB_PORT=your_data_base_port
