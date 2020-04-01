@@ -55,7 +55,7 @@
                 {% if book.review_set.all %}
                     <div class="card card-outline-secondary my-4">
                         <div class="card-header">
-                            Avaliações
+                            Avaliações {{ book.review_set.count }}
                         </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
