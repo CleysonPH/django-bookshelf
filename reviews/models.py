@@ -29,7 +29,7 @@ class Review(Base):
     )
 
     class Meta:
-        verbose_name = 'Avaliação',
+        verbose_name = 'Avaliação'
         verbose_name_plural = 'Avaliações'
 
     def __str__(self):
