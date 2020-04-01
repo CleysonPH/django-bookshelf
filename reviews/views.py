@@ -12,17 +12,19 @@ from catalog.models import Book
 @login_required
 def review_create(request, book_pk):
     book = get_object_or_404(Book, pk=book_pk)
+    form = ReviewModelForm()
 
     if request.method == 'POST':
         form = ReviewModelForm(request.POST)
-        review = form.save(commit=False)
-        review.user = request.user
-        review.book = book
-        review.save()
 
-        return redirect('catalog:book-detail', pk=book.pk)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.book = book
+            review.save()
 
-    form = ReviewModelForm()
+            return redirect('catalog:book-detail', pk=book.pk)
+
     context = {
         'page_title': 'Nova Crítica',
         'page_description': f'Faça uma crítica para o livro {book.title}',
