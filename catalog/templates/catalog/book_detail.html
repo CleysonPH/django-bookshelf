@@ -47,9 +47,9 @@
                 <p>ISBN: {{ book.isbn }}</p>
                 <p>Língua: {{ book.language }}</p>
                 <div class="w-100 d-inline-flex justify-content-between">
-                    <p>Pessoas que estão ledo: {{ book.get_reading_cout }}</p>
-                    <p>Pessoas que já leram: {{ book.get_read_cout }}</p>
-                    <p>Pessoas que querem ler: {{ book.get_want_read_cout }}</p>
+                    <p>Pessoas que estão ledo: {{ book.get_reading_count }}</p>
+                    <p>Pessoas que já leram: {{ book.get_read_count }}</p>
+                    <p>Pessoas que querem ler: {{ book.get_want_read_count }}</p>
                 </div>
 
                 {% if book.review_set.all %}

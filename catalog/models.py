@@ -81,11 +81,11 @@ class Book(Base):
     def get_absolute_url(self):
         return reverse('catalog:book-detail', kwargs={'pk': self.pk})
 
-    def get_reading_cout(self):
+    def get_reading_count(self):
         return self.bookshelfitem_set.filter(status='reading').count()
 
-    def get_read_cout(self):
+    def get_read_count(self):
         return self.bookshelfitem_set.filter(status='read').count()
 
-    def get_want_read_cout(self):
+    def get_want_read_count(self):
         return self.bookshelfitem_set.filter(status='want').count()
