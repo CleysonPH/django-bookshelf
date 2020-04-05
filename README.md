@@ -1,4 +1,4 @@
-[![time tracker](https://wakatime.com/badge/github/CleysonPH/django-bookshelf.svg)](https://wakatime.com/badge/github/CleysonPH/django-bookshelf)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![time tracker](https://wakatime.com/badge/github/CleysonPH/django-bookshelf.svg)](https://wakatime.com/badge/github/CleysonPH/django-bookshelf)
 
 # Virtual Bookshelf
 
